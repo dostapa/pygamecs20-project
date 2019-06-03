@@ -6,11 +6,13 @@ import sys
 #classes for the sprites
 class enemy1(pygame.sprite.Sprite):
     def __init__(self):
+        self.ex = random.randint(1,800)
+        self.ey = random.randint(1,800)
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((50, 50))
         self.image.fill((0,0,255))
         self.rect = self.image.get_rect()
-        self.rect.center = (400, 400)
+        self.rect.center = (200,200)
 
 class player(pygame.sprite.Sprite):
     def __init__(self):
@@ -26,7 +28,7 @@ class bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((15, 15))
         self.image.fill((0,0,0))
         self.rect = self.image.get_rect()
-        self.rect.center = (500, 500)
+        self.rect.center = (5000, 5000)
 pygame.init()
 pygame.display.set_caption('game')
 
@@ -50,20 +52,17 @@ bullet = bullet()
 enemies.add(enemy1)
 playerg.add(player)
 bullets.add(bullet)
-
+enemies.add(enemy1)
 backgroundcolor = (80,0,40)
 #variables
 php = (0,255,0)
 phw = 100
 bx = 0
 by = 0
-enemycount = 3
+enemycount = 1
+enemy1.rect.x = random.randint(1,800)
+enemy1.rect.y = random.randint(1,800)
 #Main game loop
-while player.rect.x != enemy1.rect.x:
-    if player.rect.x > enemy1.rect.x:
-        enemy1.rect.x += 1
-    if player.rect.y > enemy1.rect.y:
-        enemy1.rect.y -= 1
 while not done:
         for event in pygame.event.get():
 
@@ -75,7 +74,6 @@ while not done:
                     bullet.rect.x = bx
                     bullet.rect.y = by
                     print(bx,by)
-
         #Listens to the keyboard for specific key presses, then runs the if statement that is true
         pressed = pygame.key.get_pressed()
         #events
@@ -97,7 +95,6 @@ while not done:
         if pygame.sprite.collide_rect(bullet,enemy1):
                 pygame.sprite.Sprite.kill(enemy1)
                 enemycount -= 1;
-
         if phw <= 0:
             sys.exit()
         #updates the sprite groups
