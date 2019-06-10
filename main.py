@@ -160,6 +160,7 @@ while not done:
         if level == 3:
             textsurface3 = font2.render("You Win", False, (255, 255, 255))
             screen.blit(textsurface3,(960,540))
+            
         #draws the text onto the screen
         screen.blit(textsurface,(200,0))
         screen.blit(textsurface2,(200,50))
