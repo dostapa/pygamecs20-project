@@ -1,4 +1,4 @@
-# pygamecs20-project
+# 2019 CS PROJECT
 Small game I made for a Highschool CS project. Simple aim and click game. Lose health when enemies touch you, gain health when you defeat an enemy.
 Level system and difficulty. Enemies get faster the more enemies you defeat.
 
